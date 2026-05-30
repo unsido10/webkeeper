@@ -21,9 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationManagerCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -100,10 +98,15 @@ public class MainActivity extends AppCompatActivity {
         settings.setSupportZoom(true);
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
+
+        // Desktop User Agent — сайт покажет десктопную версию
         settings.setUserAgentString(
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
-"(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         );
+
+        webView.setScrollBarStyle(WebView.SCROLLBARS_INSIDE_OVERLAY);
+        webView.setInitialScale(1);
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -115,6 +118,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                // Inject JS to force desktop viewport
+                view.evaluateJavascript(
+                    "document.querySelector('meta[name=viewport]') && " +
+                    "(document.querySelector('meta[name=viewport]').content = " +
+                    "'width=1280, initial-scale=0.5');",
+                    null
+                );
                 urlInput.setText(url);
                 prefs.edit().putString("url", url).apply();
                 statusText.setText("● LIVE");
