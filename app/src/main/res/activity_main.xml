@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0A0A0F"
+    android:gravity="center"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WebKeeper"
+        android:textColor="#00FF88"
+        android:textSize="28sp"
+        android:fontFamily="monospace"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Держит сайт открытым в фоне"
+        android:textColor="#8888AA"
+        android:textSize="13sp"
+        android:layout_marginBottom="32dp" />
+
+    <EditText
+        android:id="@+id/urlInput"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#1A1A2E"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#666688"
+        android:hint="https://example.com"
+        android:textSize="13sp"
+        android:fontFamily="monospace"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:inputType="textUri"
+        android:imeOptions="actionGo"
+        android:singleLine="true"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnOpen"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="Открыть сайт"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:background="#00C896" />
+
+</LinearLayout>
