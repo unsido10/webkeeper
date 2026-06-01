@@ -1,53 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#0A0A0F"
-    android:gravity="center"
-    android:padding="24dp">
+    android:background="#0A0A0F">
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomBar" />
 
     <TextView
+        android:id="@+id/statusText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WebKeeper"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="● LIVE"
         android:textColor="#00FF88"
-        android:textSize="28sp"
+        android:textSize="10sp"
         android:fontFamily="monospace"
-        android:layout_marginBottom="8dp" />
+        android:background="#CC0A0A0F"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/urlBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Держит сайт открытым в фоне"
-        android:textColor="#8888AA"
-        android:textSize="13sp"
-        android:layout_marginBottom="32dp" />
+        android:layout_above="@+id/bottomBar"
+        android:orientation="horizontal"
+        android:background="#EE0D0D1A"
+        android:padding="8dp"
+        android:visibility="gone">
 
-    <EditText
-        android:id="@+id/urlInput"
+        <EditText
+            android:id="@+id/urlInput"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="#1A1A2E"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#666688"
+            android:hint="https://example.com"
+            android:textSize="13sp"
+            android:fontFamily="monospace"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:inputType="textUri"
+            android:imeOptions="actionGo"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/btnGo"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginStart="6dp"
+            android:text="GO"
+            android:textColor="#FFFFFF"
+            android:background="#00C896"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:background="#1A1A2E"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#666688"
-        android:hint="https://example.com"
-        android:textSize="13sp"
-        android:fontFamily="monospace"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:inputType="textUri"
-        android:imeOptions="actionGo"
-        android:singleLine="true"
-        android:layout_marginBottom="16dp" />
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#EE0D0D1A"
+        android:gravity="center_vertical">
 
-    <Button
-        android:id="@+id/btnOpen"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:text="Открыть сайт"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:background="#00C896" />
+        <Button
+            android:id="@+id/btnRefresh"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="↻"
+            android:textColor="#8888AA"
+            android:textSize="20sp"
+            android:background="?attr/selectableItemBackground" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnMenu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="✎"
+            android:textColor="#8888AA"
+            android:textSize="20sp"
+            android:background="?attr/selectableItemBackground" />
+
+    </LinearLayout>
+
+</RelativeLayout>
